@@ -31,3 +31,6 @@ dissertation
 
 **#Question**
 Do socio-economic, demographic factors (e.g. age, gender, race, rural/urban, income, educationetc) explain the adoption of mobile banking?
+
+**#Data **
+1.xlsx
