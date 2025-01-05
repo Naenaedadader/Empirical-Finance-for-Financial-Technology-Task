@@ -1,0 +1,11 @@
+#Solution
+
+Following steps 
+
+1.First, establish Random Effects (RE) and Fixed Effects (FE) models, then use the Hausman test to determine whether to accept the null hypothesis or to reject it. 
+
+2.Based on the recommended model as the baseline, perform a trend analysis and then, according to the p-value, filter the independent variables that are more suitable for the model and establish the model. 
+
+3.Conduct heteroskedasticity tests on the residuals of the optimized model from step 2. If the results are unsatisfactory, use robust standard errors to build the model to avoid heteroskedastic residuals. Then proceed to perform stability tests. 
+
+4.Summarize the data and explain the findings. 
