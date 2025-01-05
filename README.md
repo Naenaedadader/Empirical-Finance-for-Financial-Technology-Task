@@ -27,5 +27,7 @@ dissertation
 
 9.Although Stata is the recommended software package, you may use any other.
 
-**Question**
+
+
+**#Question**
 Do socio-economic, demographic factors (e.g. age, gender, race, rural/urban, income, educationetc) explain the adoption of mobile banking?
