@@ -9,3 +9,7 @@ Following steps
 3.Conduct heteroskedasticity tests on the residuals of the optimized model from step 2. If the results are unsatisfactory, use robust standard errors to build the model to avoid heteroskedastic residuals. Then proceed to perform stability tests. 
 
 4.Summarize the data and explain the findings. 
+
+
+
+Have save the log in log.smcl profile. Pls read this file and flow the steps
