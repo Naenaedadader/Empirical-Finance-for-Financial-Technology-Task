@@ -1,0 +1,433 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ryano\OneDrive - University of Bristol\Group Coursework - Empirical Finance\q3_running turtorial2\Ryan q3 log.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}26 Apr 2024, 02:43:27
+
+{com}. xtset country_id Year, yearly
+{res}
+{col 1}{txt:Panel variable: }{res:country_id}{txt: (unbalanced)}
+{p 1 16 2}{txt:Time variable: }{res:Year}{txt:, }{res:{bind:2015}}{txt: to }{res:{bind:2022}}{p_end}
+{txt}{col 10}Delta: {res}1 year
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop gender_ratiomaletofemale GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       154
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.7219{col 63}{txt}min{col 67}={col 69}{res}         2
+{txt}     Between = {res}0.0360{col 63}{txt}avg{col 67}={col 69}{res}       6.2
+{txt}     Overall = {res}0.0390{col 63}{txt}max{col 67}={col 69}{res}         8
+
+{txt}{col 49}F({res}8{txt}, {res}121{txt}){col 67}={col 70}{res}    39.26
+{txt}corr(u_i, Xb) = {res}-0.9757{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      t{col 61}   P>|t|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop {c |}{col 29}{res}{space 2} 187.4314{col 41}{space 2} 35.34872{col 52}{space 1}    5.30{col 61}{space 3}0.000{col 69}{space 4} 117.4492{col 82}{space 3} 257.4135
+{txt}{space 3}gender_ratiomaletofemale {c |}{col 29}{res}{space 2}-9657.429{col 41}{space 2} 8730.849{col 52}{space 1}   -1.11{col 61}{space 3}0.271{col 69}{space 4}-26942.45{col 82}{space 3}  7627.59
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2} .1753188{col 41}{space 2}  .114705{col 52}{space 1}    1.53{col 61}{space 3}0.129{col 69}{space 4}-.0517699{col 82}{space 3} .4024076
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2}-199.2836{col 41}{space 2} 88.53742{col 52}{space 1}   -2.25{col 61}{space 3}0.026{col 69}{space 4}-374.5668{col 82}{space 3} -24.0004
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-281.5758{col 41}{space 2} 99.67328{col 52}{space 1}   -2.82{col 61}{space 3}0.006{col 69}{space 4}-478.9053{col 82}{space 3} -84.2462
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 19.04568{col 41}{space 2} 3.918098{col 52}{space 1}    4.86{col 61}{space 3}0.000{col 69}{space 4} 11.28877{col 82}{space 3} 26.80259
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 18.29018{col 41}{space 2} 19.76934{col 52}{space 1}    0.93{col 61}{space 3}0.357{col 69}{space 4}-20.84844{col 82}{space 3}  57.4288
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-22.68497{col 41}{space 2} 7.465151{col 52}{space 1}   -3.04{col 61}{space 3}0.003{col 69}{space 4}-37.46421{col 82}{space 3}-7.905738
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2} 8317.566{col 41}{space 2} 9841.196{col 52}{space 1}    0.85{col 61}{space 3}0.400{col 69}{space 4}-11165.68{col 82}{space 3} 27800.81
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 2887.2431
+                    {txt}sigma_e {c |} {res} 268.44463
+                        {txt}rho {c |} {res} .99142953{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}121{txt}) = {res}15.82{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. est store fixed
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop gender_ratiomaletofemale GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, re
+{res}
+{txt}Random-effects GLS regression                   Number of obs     = {res}       154
+{txt}Group variable: {res}country_id                      {txt}Number of groups  = {res}        25
+
+{txt}R-squared:                                      Obs per group:
+     Within  = {res}0.6059                                         {txt}min = {res}         2
+{txt}     Between = {res}0.1389                                         {txt}avg = {res}       6.2
+{txt}     Overall = {res}0.2998                                         {txt}max = {res}         8
+
+                                                {txt}Wald chi2({res}8{txt})      =  {res}   176.96
+{txt}corr(u_i, X) = {res}0{txt} (assumed)                      Prob > chi2       =     {res}0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop {c |}{col 29}{res}{space 2} 10.31802{col 41}{space 2} 8.275868{col 52}{space 1}    1.25{col 61}{space 3}0.212{col 69}{space 4}-5.902382{col 82}{space 3} 26.53843
+{txt}{space 3}gender_ratiomaletofemale {c |}{col 29}{res}{space 2} -1635.21{col 41}{space 2} 2260.117{col 52}{space 1}   -0.72{col 61}{space 3}0.469{col 69}{space 4}-6064.958{col 82}{space 3} 2794.538
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2} -.081949{col 41}{space 2} .0747106{col 52}{space 1}   -1.10{col 61}{space 3}0.273{col 69}{space 4}-.2283791{col 82}{space 3} .0644812
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2} 31.04077{col 41}{space 2} 76.95571{col 52}{space 1}    0.40{col 61}{space 3}0.687{col 69}{space 4}-119.7897{col 82}{space 3} 181.8712
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-104.8828{col 41}{space 2} 61.52139{col 52}{space 1}   -1.70{col 61}{space 3}0.088{col 69}{space 4}-225.4625{col 82}{space 3} 15.69695
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 33.79286{col 41}{space 2}   2.7811{col 52}{space 1}   12.15{col 61}{space 3}0.000{col 69}{space 4} 28.34201{col 82}{space 3} 39.24372
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 4.781196{col 41}{space 2} 9.878605{col 52}{space 1}    0.48{col 61}{space 3}0.628{col 69}{space 4}-14.58051{col 82}{space 3} 24.14291
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-1.613356{col 41}{space 2} 5.168875{col 52}{space 1}   -0.31{col 61}{space 3}0.755{col 69}{space 4}-11.74416{col 82}{space 3} 8.517453
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2} 970.4058{col 41}{space 2}  3057.53{col 52}{space 1}    0.32{col 61}{space 3}0.751{col 69}{space 4}-5022.242{col 82}{space 3} 6963.054
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 375.46139
+                    {txt}sigma_e {c |} {res} 268.44463
+                        {txt}rho {c |} {res} .66173195{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+
+{com}. est store random
+
+. hausman fixed random
+
+{txt}{p 0 8}Note: the rank of the differenced variance matrix ({result:7}) does not equal the number of coefficients being tested ({result:8}); be sure this is what you expect, or there may be problems computing the test.  Examine the output of your estimators for anything unexpected and possibly consider scaling your variables so that the coefficients are on a similar scale.
+
+{col 18}{hline 4} Coefficients {hline 4}
+{col 14}{c |}{col 21}(b){col 34}(B){col 49}(b-B){col 59}sqrt(diag(V_b-V_B))
+{col 14}{c |}{col 17}   fixed    {col 30}   random   {col 46}Difference{col 63}Std. err.
+{hline 13}{c +}{hline 64}
+Urbanpopul~p {c |}{res}{col 18} 187.4314{col 31} 10.31802{col 47} 177.1133{col 63} 34.36629
+{txt}gender_rat~e {c |}{res}{col 18}-9657.429{col 31} -1635.21{col 47}-8022.219{col 63} 8433.244
+{txt}GDPpercapi~S {c |}{res}{col 18} .1753188{col 31} -.081949{col 47} .2572678{col 63} .0870377
+{txt}Youthpo~1524 {c |}{res}{col 18}-199.2836{col 31} 31.04077{col 47}-230.3243{col 63} 43.78006
+{txt}Population~e {c |}{res}{col 18}-281.5758{col 31}-104.8828{col 47} -176.693{col 63} 78.42119
+{txt}Individual~t {c |}{res}{col 18} 19.04568{col 31} 33.79286{col 47}-14.74718{col 63} 2.759887
+{txt}Employment~o {c |}{res}{col 18} 18.29018{col 31} 4.781196{col 47} 13.50898{col 63} 17.12425
+{txt}Schoolenro~r {c |}{res}{col 18}-22.68497{col 31}-1.613356{col 47}-21.07162{col 63} 5.386206
+{txt}{hline 13}{c BT}{hline 64}
+{ralign 78:b = Consistent under H0 and Ha; obtained from {bf:xtreg}.}
+{ralign 78:B = Inconsistent under Ha, efficient under H0; obtained from {bf:xtreg}.}
+
+Test of H0: Difference in coefficients not systematic
+
+{ralign 11:chi2({res:7})} = (b-B)'[(V_b-V_B)^(-1)](b-B)
+{ralign 11:} = {res:{ralign 6:75.01}}
+{ralign 11:Prob > chi2} = {res:{ralign 6:0.0000}}
+(V_b-V_B is not positive definite)
+
+{com}. //So far we have run a fixed effects regression, followed by a randome effects regression, and then performed a Hausman test. The Hausman compares the coeffs from the FE model to the RE model to determine which model is more appropriate for our data. p-value < 0.05 (p = 0.0000), indicates that the null hypothesis (which states that there is no difference between the FE and RE coeffs) is rejected. When the coeffs are different, it suggests that the RE model assumption is violated, and so FE is better.
+{bf}{err}/{sf} is not a valid command name
+{txt}{search r(199), local:r(199);}
+
+{com}. *Now we will run the LLC (Levin-LinlChu) unit root tests on all variables. Commonly used for panel data and can help determine whether your variables exhibit a unit root, indicating non-stationarity, or are stationary over time. This information is crucial for selecting appropriate modeling techniques and interpreting regression results correctly.
+
+. xtunitroot llc Urbanpopulationoftotalpop, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Urbanpopulationoftotalpop
+{txt}{hline 58}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21} -0.6111
+{txt}{col 2}Adjusted t*{res}{col 21} -0.4179{col 37}0.3380
+{txt}{hline 78}
+
+{com}. *In this case, the p-value is 0.3380, which is greater than the conventional significance level of 0.05. Therefore, we fail to reject the null hypothesis at the 5% significance level. This suggests that there is insufficient evidence to conclude that the Urbanpopulationoftotalpop variable is stationary. Hence we need to apply a transformation such as taking the ln and then re-test it.
+
+. gen Urbanpopulationoftotalpop1 = ln(Urbanpopulationoftotalpop)
+{txt}(7 missing values generated)
+
+{com}. xtunitroot llc Urbanpopulationoftotalpop, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Urbanpopulationoftotalpop
+{txt}{hline 58}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21} -0.6111
+{txt}{col 2}Adjusted t*{res}{col 21} -0.4179{col 37}0.3380
+{txt}{hline 78}
+
+{com}. xtunitroot llc Urbanpopulationoftotalpop1, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Urbanpopulationoftotalpop1
+{txt}{hline 59}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21}-11.5855
+{txt}{col 2}Adjusted t*{res}{col 21}-11.3834{col 37}0.0000
+{txt}{hline 78}
+
+{com}. *Now we get p-value = 0.0000 <0.05 indicating stationarity
+
+. xtunitroot llc GDPpercapitaconstant2015US, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}GDPpercapitaconstant2015US
+{txt}{hline 59}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21}-12.5404
+{txt}{col 2}Adjusted t*{res}{col 21} -9.7171{col 37}0.0000
+{txt}{hline 78}
+
+{com}. xtunitroot llc Youthpopulationages1524, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Youthpopulationages1524
+{txt}{hline 56}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21}-18.9318
+{txt}{col 2}Adjusted t*{res}{col 21}-18.1388{col 37}0.0000
+{txt}{hline 78}
+
+{com}. xtunitroot llc Populationages65andabove, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Populationages65andabove
+{txt}{hline 57}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21} -8.8004
+{txt}{col 2}Adjusted t*{res}{col 21} -6.5389{col 37}0.0000
+{txt}{hline 78}
+
+{com}. xtunitroot llc IndividualsusingtheInternet, trend
+{err}Levin-Lin-Chiu test requires strongly balanced data
+{txt}{search r(498), local:r(498);}
+
+{com}. *LLC requires complete data
+
+. xtunitroot llc Employmenttopopulationratio, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}Employmenttopopulationratio
+{txt}{hline 60}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     26
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21}-17.3022
+{txt}{col 2}Adjusted t*{res}{col 21}-11.9070{col 37}0.0000
+{txt}{hline 78}
+
+{com}. xtunitroot llc Schoolenrollmentprimarygr, trend
+{err}Levin-Lin-Chiu test requires strongly balanced data
+{txt}{search r(498), local:r(498);}
+
+{com}. xtunitroot llc gender_ratiomaletofemale, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}gender_ratiomaletofemale
+{txt}{hline 57}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      8
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21} -1.1608
+{txt}{col 2}Adjusted t*{res}{col 21} -0.2506{col 37}0.4010
+{txt}{hline 78}
+
+{com}. xtunitroot llc ln(gender_ratiomaletofemale), trend
+{err}ln:  operator invalid
+{txt}{search r(198), local:r(198);}
+
+{com}. *We found that taking the ln of the genderratio variable did not lead to stationarity, so we will use the first differences transformation:
+
+. gen gender_ratiomtofdiff = D.gender_ratiomaletofemale
+{txt}(34 missing values generated)
+
+{com}. xtunitroot llc gender_ratiomtofdiff, trend
+
+{txt}Levin–Lin–Chu unit-root test for {res}gender_ratiomtofdiff
+{txt}{hline 53}
+H0: Panels contain unit roots{col 45}Number of panels{col 63}={col 64}{res}     27
+{txt}Ha: Panels are stationary{col 45}Number of periods{col 63}={col 64}{res}      7
+
+{txt}AR parameter: {res}Common{txt}{col 45}Asymptotics: {res}N/T -> 0
+{txt}Panel means:  {res}Included
+{txt}Time trend:   {res}Included
+
+{txt}ADF regressions: {res}1{txt} lag
+LR variance:     {res}Bartlett{txt} kernel, {res}6.00{txt} lags average (chosen by {res}LLC{txt})
+{hline 78}
+{col 21}Statistic{col 36}p-value
+{hline 78}
+{col 2}Unadjusted t{res}{col 21}-12.2046
+{txt}{col 2}Adjusted t*{res}{col 21}-12.0823{col 37}0.0000
+{txt}{hline 78}
+
+{com}. *Now we can run our FE with our stationary variables (note: we do not know whether IndividualsusingtheInternet and Schoolenrollmentprimarygr are stationary or not sue to missing data)
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.7163{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0769{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0394{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}97{txt}){col 67}={col 70}{res}    30.61
+{txt}corr(u_i, Xb) = {res}-0.9781{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      t{col 61}   P>|t|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}Urbanpopulationoftotalpop1 {c |}{col 29}{res}{space 2} 6907.984{col 41}{space 2} 1503.028{col 52}{space 1}    4.60{col 61}{space 3}0.000{col 69}{space 4} 3924.891{col 82}{space 3} 9891.078
+{txt}{space 7}gender_ratiomtofdiff {c |}{col 29}{res}{space 2}-13259.14{col 41}{space 2} 54811.91{col 52}{space 1}   -0.24{col 61}{space 3}0.809{col 69}{space 4}-122045.6{col 82}{space 3} 95527.33
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2}  .236217{col 41}{space 2}   .13668{col 52}{space 1}    1.73{col 61}{space 3}0.087{col 69}{space 4} -.035055{col 82}{space 3}  .507489
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2}-252.1524{col 41}{space 2} 119.3286{col 52}{space 1}   -2.11{col 61}{space 3}0.037{col 69}{space 4}-488.9866{col 82}{space 3}-15.31826
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-405.7909{col 41}{space 2} 117.2618{col 52}{space 1}   -3.46{col 61}{space 3}0.001{col 69}{space 4}-638.5232{col 82}{space 3}-173.0586
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 27.31874{col 41}{space 2} 4.062513{col 52}{space 1}    6.72{col 61}{space 3}0.000{col 69}{space 4} 19.25578{col 82}{space 3} 35.38171
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 28.27433{col 41}{space 2} 24.19979{col 52}{space 1}    1.17{col 61}{space 3}0.246{col 69}{space 4}-19.75555{col 82}{space 3} 76.30421
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-27.35572{col 41}{space 2} 8.227629{col 52}{space 1}   -3.32{col 61}{space 3}0.001{col 69}{space 4}-43.68529{col 82}{space 3}-11.02616
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2}-17997.54{col 41}{space 2} 5971.893{col 52}{space 1}   -3.01{col 61}{space 3}0.003{col 69}{space 4} -29850.1{col 82}{space 3} -6144.99
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 3135.4258
+                    {txt}sigma_e {c |} {res} 259.35442
+                        {txt}rho {c |} {res} .99320432{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}97{txt}) = {res}15.22{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. *Analysis (prior to any robustness and heteroskedasticity checks):
+
+. *Urbanpopulationoftotalpop1, Youthpopulationages1524, Populationages65andabove, IndividualsusingtheInternet, Schoolenrollmentprimarygr are significant (<0.05 p-value). Urbanpopulationoftotalpop1 has positive effect on Numregisteredaccounts (positive coefficient), Youthpopulationages1524 has negative impact (not expected, Populationages65andabove has negative effect, IndividualsusingtheInternet has positive effect, Schoolenrollmentprimarygr has negative (not expected?).
+
+. 
+. *The overall F-test for the fixed effects regression model is significant (p < 0.001), indicating that the model as a whole is statistically significant in explaining the variation in the dependent variable "Numregisteredaccounts." However, this test assesses the overall model fit rather than the stationarity of individual variables.
+
+. 
+. *The within R-squared value is 0.7163, indicating that approximately 71.63% of the variation in "Numregisteredaccounts" is explained by the independent variables included in the model. The R-squared value doesn't provide information about stationarity but rather the proportion of variance explained by the model.
+
+. *We now opted to cluster the standard errors by country ID using the 'fce(cluster country_id)' option. This decision was driven by the recognition of potential heteroscedasticity in the data, wherein the variance of the error term may vary across different countries.
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, fe vce(cluster country_id)
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.7163{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0769{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0394{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}24{txt}){col 67}={col 70}{res}    18.75
+{txt}corr(u_i, Xb) = {res}-0.9781{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{ralign 93:(Std. err. adjusted for {res:25} clusters in {res:country_id})}
+{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 29}{c |}{col 41}    Robust
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  std. err.{col 53}      t{col 61}   P>|t|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 1}Urbanpopulationoftotalpop1 {c |}{col 29}{res}{space 2} 6907.984{col 41}{space 2} 2662.432{col 52}{space 1}    2.59{col 61}{space 3}0.016{col 69}{space 4} 1412.994{col 82}{space 3} 12402.97
+{txt}{space 7}gender_ratiomtofdiff {c |}{col 29}{res}{space 2}-13259.14{col 41}{space 2} 34003.88{col 52}{space 1}   -0.39{col 61}{space 3}0.700{col 69}{space 4} -83439.7{col 82}{space 3} 56921.42
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2}  .236217{col 41}{space 2} .1916444{col 52}{space 1}    1.23{col 61}{space 3}0.230{col 69}{space 4}-.1593176{col 82}{space 3} .6317516
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2}-252.1524{col 41}{space 2} 157.6017{col 52}{space 1}   -1.60{col 61}{space 3}0.123{col 69}{space 4}-577.4264{col 82}{space 3} 73.12156
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-405.7909{col 41}{space 2} 151.7022{col 52}{space 1}   -2.67{col 61}{space 3}0.013{col 69}{space 4}-718.8889{col 82}{space 3}-92.69293
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 27.31874{col 41}{space 2}  10.1778{col 52}{space 1}    2.68{col 61}{space 3}0.013{col 69}{space 4} 6.312798{col 82}{space 3} 48.32469
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 28.27433{col 41}{space 2} 29.11967{col 52}{space 1}    0.97{col 61}{space 3}0.341{col 69}{space 4}-31.82571{col 82}{space 3} 88.37437
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-27.35572{col 41}{space 2} 10.42773{col 52}{space 1}   -2.62{col 61}{space 3}0.015{col 69}{space 4} -48.8775{col 82}{space 3}-5.833949
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2}-17997.54{col 41}{space 2} 10714.46{col 52}{space 1}   -1.68{col 61}{space 3}0.106{col 69}{space 4} -40111.1{col 82}{space 3} 4116.009
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 3135.4258
+                    {txt}sigma_e {c |} {res} 259.35442
+                        {txt}rho {c |} {res} .99320432{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+
+{com}. *By clustering at the country level, we acknowledge the likelihood of correlated errors within countries and the possibility of varying levels of volatility across countries. This clustering approach ensures that our estimates are robust to heteroskedasticity problems (violations of the assumption of homoscedasticity) and enhances the reliability of our statistical inference. Thus, clustering by country ID serves as a critical methodological choice to account for the inherent heterogeneity and correlation structure present in the panel data, ultimately strengthening the validity of our regression results.
+
+. *Comparing the results between the clustered and non-clustered models reveals notable differences in the estimated coefficients and their significance levels. In the non-clustered model, some variables exhibited significant effects on the outcome variable, whereas their significance diminished or even disappeared in the clustered model. This discrepancy underscores the importance of accounting for potential heteroscedasticity and within-group correlation present in the data. The clustered model, by adjusting the standard errors to reflect the clustered structure of the data, provides more accurate estimates of the coefficients and their associated significance levels. Therefore, the significant changes observed in the coefficients and their significance levels between the two models underscore the necessity of applying appropriate techniques to address heteroscedasticity and within-group correlation in panel data analysis, ensuring the reliability and validity of the regression results.
+
+. ssc install xttest3
+{txt}checking {hilite:xttest3} consistency and verifying not already installed...
+all files already exist and are up to date.
+
+{com}. *Wald test for heteroskedasticity:
+
+. xttest3
+
+{txt}Modified Wald test for groupwise heteroskedasticity
+in fixed effect regression model
+
+{res}H0: sigma(i)^2 = sigma^2 for all i
+
+{txt}chi2 (25)  =   {res} 6.3e+29
+{txt}Prob>chi2 =    {res}  0.0000
+
+
+{com}. *Indicates that there is severe heteroskedasticity in the model
+
+. *Very very severe
+
+. *Not sure where to go from here
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\ryano\OneDrive - University of Bristol\Group Coursework - Empirical Finance\q3_running turtorial2\Ryan q3 log.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}26 Apr 2024, 04:38:33
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
