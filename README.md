@@ -26,3 +26,6 @@ dissertation
 8.Use at least one econometric technique covered in the unit syllabus and relevant diagnostic/robustness tests to evaluate the validity of results. 
 
 9.Although Stata is the recommended software package, you may use any other.
+
+**Question**
+Do socio-economic, demographic factors (e.g. age, gender, race, rural/urban, income, educationetc) explain the adoption of mobile banking?
