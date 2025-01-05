@@ -1,6 +1,6 @@
 # Empirical-Finance-for-Financial-Technology-Task
 
-#Introduction: Your task is to write a short research paper on the topic provided. A description of the topic 
+**#Introduction:** Your task is to write a short research paper on the topic provided. A description of the topic 
 and requirements are given below. You are required to narrow down your chosen topic following the 
 guidelines provided, formulate research question(s) and download appropriate data. Use relevant 
 quantitative technique/s covered in this unit. Present, interpret and discuss your results in a written report. 
@@ -8,7 +8,7 @@ The purpose of this coursework is to develop your analytical and research skills
 dissertation
 
 
-#Requirements:  
+**#Requirements:**  
 1.Use the datasets Financial Access Survey (FAS) by the International Monetary Fund and the World Bank Development Indicators (WDI).  
 
 2.Use the data for years 2020, 2021 and 2022 for the during-covid period. 
