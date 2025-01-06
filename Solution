@@ -1,15 +1,44 @@
-#Solution
-
-Following steps 
-
-1.First, establish Random Effects (RE) and Fixed Effects (FE) models, then use the Hausman test to determine whether to accept the null hypothesis or to reject it. 
-
-2.Based on the recommended model as the baseline, perform a trend analysis and then, according to the p-value, filter the independent variables that are more suitable for the model and establish the model. 
-
-3.Conduct heteroskedasticity tests on the residuals of the optimized model from step 2. If the results are unsatisfactory, use robust standard errors to build the model to avoid heteroskedastic residuals. Then proceed to perform stability tests. 
-
-4.Summarize the data and explain the findings. 
+(Have save the log in log.smcl profile. Pls read this file and flow the steps.)
 
 
+################################################
+Analytical Steps for Mobile Banking Adoption Study
 
-Have save the log in log.smcl profile. Pls read this file and flow the steps
+Preparation
+
+1. Define Research Objective: Investigate the socio-economic and demographic factors influencing mobile banking adoption.
+2. Data Collection and Preprocessing:
+- Gather panel data with variables like urbanization rate, GDP, internet usage, etc.
+- Perform data cleaning, check for missing values, and handle incomplete data.
+3. Unit Root Testing:
+- Use Levin-Lin-Chu (LLC) test to confirm the stationarity of variables.
+- Apply logarithmic transformations or first differences for non-stationary variables (e.g., Urbanpopulationoftotalpop).
+
+Fixed Effects (FE) Model Analysis
+
+1. Model Selection: Conduct a Hausman test to compare Fixed Effects (FE) and Random Effects (RE) models, selecting the FE model.
+2. Variable Testing and Handling:
+- Identify significant variables (e.g., Urbanpopulationoftotalpop and IndividualsusingtheInternet).
+- Address endogenous variables and exclude non-significant ones.
+3. Heteroskedasticity Testing: Use the Wald test to identify the presence of heteroskedasticity in the model.
+4. Interpretation of Results:
+- Urbanization and internet usage rates significantly influence mobile banking adoption.
+- Variables like gender ratio and GDP per capita are not significant.
+
+Generalized Method of Moments (GMM) Analysis
+
+1. Reason for Using GMM: Address issues of endogeneity, heteroskedasticity, and autocorrelation found in the FE model.
+2. Variable Handling:
+- Use System GMM, combining first-differenced variables and lagged values as instruments.
+- Remove problematic variables like gender_ratio that remain non-stationary.
+3. GMM Estimation:
+- Build a regression model incorporating lagged dependent variables and other explanatory variables.
+- Use first differences and lagged values for estimation.
+4. Diagnostic Testing:
+- Arellano-Bond Test: Check for first- and second-order autocorrelation.
+- Hansen Test: Validate the instruments used.
+- Sargan Test: Examine over-identification restrictions.
+5. Interpretation of Results:
+- Lagged dependent variables highlight the time dependency of mobile banking adoption.
+- Urbanization and GDP have significant impacts
+
