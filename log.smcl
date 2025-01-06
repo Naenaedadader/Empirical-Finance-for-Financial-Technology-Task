@@ -1,0 +1,895 @@
+{smcl}
+{com}{sf}{ul off}{txt}{.-}
+      name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\User\Desktop\trash.smcl
+  {txt}log type:  {res}smcl
+ {txt}opened on:  {res}27 Apr 2024, 12:24:22
+
+{com}. xtset country_id Year, yearly
+{res}
+{col 1}{txt:Panel variable: }{res:country_id}{txt: (unbalanced)}
+{p 1 16 2}{txt:Time variable: }{res:Year}{txt:, }{res:{bind:2015}}{txt: to }{res:{bind:2022}}{p_end}
+{txt}{col 10}Delta: {res}1 year
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop gender_ratiomaletofemale GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       154
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.7219{col 63}{txt}min{col 67}={col 69}{res}         2
+{txt}     Between = {res}0.0360{col 63}{txt}avg{col 67}={col 69}{res}       6.2
+{txt}     Overall = {res}0.0390{col 63}{txt}max{col 67}={col 69}{res}         8
+
+{txt}{col 49}F({res}8{txt}, {res}121{txt}){col 67}={col 70}{res}    39.26
+{txt}corr(u_i, Xb) = {res}-0.9757{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      t{col 61}   P>|t|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop {c |}{col 29}{res}{space 2} 187.4314{col 41}{space 2} 35.34872{col 52}{space 1}    5.30{col 61}{space 3}0.000{col 69}{space 4} 117.4492{col 82}{space 3} 257.4135
+{txt}{space 3}gender_ratiomaletofemale {c |}{col 29}{res}{space 2}-9657.429{col 41}{space 2} 8730.849{col 52}{space 1}   -1.11{col 61}{space 3}0.271{col 69}{space 4}-26942.45{col 82}{space 3}  7627.59
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2} .1753188{col 41}{space 2}  .114705{col 52}{space 1}    1.53{col 61}{space 3}0.129{col 69}{space 4}-.0517699{col 82}{space 3} .4024076
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2}-199.2836{col 41}{space 2} 88.53742{col 52}{space 1}   -2.25{col 61}{space 3}0.026{col 69}{space 4}-374.5668{col 82}{space 3} -24.0004
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-281.5758{col 41}{space 2} 99.67328{col 52}{space 1}   -2.82{col 61}{space 3}0.006{col 69}{space 4}-478.9053{col 82}{space 3} -84.2462
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 19.04568{col 41}{space 2} 3.918098{col 52}{space 1}    4.86{col 61}{space 3}0.000{col 69}{space 4} 11.28877{col 82}{space 3} 26.80259
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 18.29018{col 41}{space 2} 19.76934{col 52}{space 1}    0.93{col 61}{space 3}0.357{col 69}{space 4}-20.84844{col 82}{space 3}  57.4288
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-22.68497{col 41}{space 2} 7.465151{col 52}{space 1}   -3.04{col 61}{space 3}0.003{col 69}{space 4}-37.46421{col 82}{space 3}-7.905738
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2} 8317.566{col 41}{space 2} 9841.196{col 52}{space 1}    0.85{col 61}{space 3}0.400{col 69}{space 4}-11165.68{col 82}{space 3} 27800.81
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 2887.2431
+                    {txt}sigma_e {c |} {res} 268.44463
+                        {txt}rho {c |} {res} .99142953{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}121{txt}) = {res}15.82{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. est store fixed
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop gender_ratiomaletofemale GDPpercapitaconstant2015US Youthpopulationages1524 Populationages65andabove IndividualsusingtheInternet Employmenttopopulationratio Schoolenrollmentprimarygr, re
+{res}
+{txt}Random-effects GLS regression                   Number of obs     = {res}       154
+{txt}Group variable: {res}country_id                      {txt}Number of groups  = {res}        25
+
+{txt}R-squared:                                      Obs per group:
+     Within  = {res}0.6059                                         {txt}min = {res}         2
+{txt}     Between = {res}0.1389                                         {txt}avg = {res}       6.2
+{txt}     Overall = {res}0.2998                                         {txt}max = {res}         8
+
+                                                {txt}Wald chi2({res}8{txt})      =  {res}   176.96
+{txt}corr(u_i, X) = {res}0{txt} (assumed)                      Prob > chi2       =     {res}0.0000
+
+{txt}{hline 28}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}      Numregisteredaccounts{col 29}{c |} Coefficient{col 41}  Std. err.{col 53}      z{col 61}   P>|z|{col 69}     [95% con{col 82}f. interval]
+{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop {c |}{col 29}{res}{space 2} 10.31802{col 41}{space 2} 8.275868{col 52}{space 1}    1.25{col 61}{space 3}0.212{col 69}{space 4}-5.902382{col 82}{space 3} 26.53843
+{txt}{space 3}gender_ratiomaletofemale {c |}{col 29}{res}{space 2} -1635.21{col 41}{space 2} 2260.117{col 52}{space 1}   -0.72{col 61}{space 3}0.469{col 69}{space 4}-6064.958{col 82}{space 3} 2794.538
+{txt}{space 1}GDPpercapitaconstant2015US {c |}{col 29}{res}{space 2} -.081949{col 41}{space 2} .0747106{col 52}{space 1}   -1.10{col 61}{space 3}0.273{col 69}{space 4}-.2283791{col 82}{space 3} .0644812
+{txt}{space 4}Youthpopulationages1524 {c |}{col 29}{res}{space 2} 31.04077{col 41}{space 2} 76.95571{col 52}{space 1}    0.40{col 61}{space 3}0.687{col 69}{space 4}-119.7897{col 82}{space 3} 181.8712
+{txt}{space 3}Populationages65andabove {c |}{col 29}{res}{space 2}-104.8828{col 41}{space 2} 61.52139{col 52}{space 1}   -1.70{col 61}{space 3}0.088{col 69}{space 4}-225.4625{col 82}{space 3} 15.69695
+{txt}IndividualsusingtheInternet {c |}{col 29}{res}{space 2} 33.79286{col 41}{space 2}   2.7811{col 52}{space 1}   12.15{col 61}{space 3}0.000{col 69}{space 4} 28.34201{col 82}{space 3} 39.24372
+{txt}Employmenttopopulationratio {c |}{col 29}{res}{space 2} 4.781196{col 41}{space 2} 9.878605{col 52}{space 1}    0.48{col 61}{space 3}0.628{col 69}{space 4}-14.58051{col 82}{space 3} 24.14291
+{txt}{space 2}Schoolenrollmentprimarygr {c |}{col 29}{res}{space 2}-1.613356{col 41}{space 2} 5.168875{col 52}{space 1}   -0.31{col 61}{space 3}0.755{col 69}{space 4}-11.74416{col 82}{space 3} 8.517453
+{txt}{space 22}_cons {c |}{col 29}{res}{space 2} 970.4058{col 41}{space 2}  3057.53{col 52}{space 1}    0.32{col 61}{space 3}0.751{col 69}{space 4}-5022.242{col 82}{space 3} 6963.054
+{txt}{hline 28}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                    sigma_u {c |} {res} 375.46139
+                    {txt}sigma_e {c |} {res} 268.44463
+                        {txt}rho {c |} {res} .66173195{txt}   (fraction of variance due to u_i)
+{hline 28}{c BT}{hline 64}
+
+{com}. est store random
+
+. hausman fixed random
+
+{txt}{p 0 8}Note: the rank of the differenced variance matrix ({result:7}) does not equal the number of coefficients being tested ({result:8}); be sure this is what you expect, or there may be problems computing the test.  Examine the output of your estimators for anything unexpected and possibly consider scaling your variables so that the coefficients are on a similar scale.
+
+{col 18}{hline 4} Coefficients {hline 4}
+{col 14}{c |}{col 21}(b){col 34}(B){col 49}(b-B){col 59}sqrt(diag(V_b-V_B))
+{col 14}{c |}{col 17}   fixed    {col 30}   random   {col 46}Difference{col 63}Std. err.
+{hline 13}{c +}{hline 64}
+Urbanpopul~p {c |}{res}{col 18} 187.4314{col 31} 10.31802{col 47} 177.1133{col 63} 34.36629
+{txt}gender_rat~e {c |}{res}{col 18}-9657.429{col 31} -1635.21{col 47}-8022.219{col 63} 8433.244
+{txt}GDPpercapi~S {c |}{res}{col 18} .1753188{col 31} -.081949{col 47} .2572678{col 63} .0870377
+{txt}Youthpo~1524 {c |}{res}{col 18}-199.2836{col 31} 31.04077{col 47}-230.3243{col 63} 43.78006
+{txt}Population~e {c |}{res}{col 18}-281.5758{col 31}-104.8828{col 47} -176.693{col 63} 78.42119
+{txt}Individual~t {c |}{res}{col 18} 19.04568{col 31} 33.79286{col 47}-14.74718{col 63} 2.759887
+{txt}Employment~o {c |}{res}{col 18} 18.29018{col 31} 4.781196{col 47} 13.50898{col 63} 17.12425
+{txt}Schoolenro~r {c |}{res}{col 18}-22.68497{col 31}-1.613356{col 47}-21.07162{col 63} 5.386206
+{txt}{hline 13}{c BT}{hline 64}
+{ralign 78:b = Consistent under H0 and Ha; obtained from {bf:xtreg}.}
+{ralign 78:B = Inconsistent under Ha, efficient under H0; obtained from {bf:xtreg}.}
+
+Test of H0: Difference in coefficients not systematic
+
+{ralign 11:chi2({res:7})} = (b-B)'[(V_b-V_B)^(-1)](b-B)
+{ralign 11:} = {res:{ralign 6:75.01}}
+{ralign 11:Prob > chi2} = {res:{ralign 6:0.0000}}
+(V_b-V_B is not positive definite)
+
+{com}. gen Urbanpopulationoftotalpop1 = ln(Urbanpopulationoftotalpop)
+{txt}(7 missing values generated)
+
+{com}. gen GDPpercapitaconstant2015US1 = ln(GDPpercapitaconstant2015US)
+{txt}(7 missing values generated)
+
+{com}. gen Youthpopulationages15241 = ln(Youthpopulationages1524)
+{txt}(7 missing values generated)
+
+{com}. gen Populationages65andabove1 = ln(Populationages65andabove)
+{txt}(7 missing values generated)
+
+{com}. gen IndividualsusingtheInternet1 = ln(IndividualsusingtheInternet)
+{txt}(33 missing values generated)
+
+{com}. gen Employmenttopopulationratio1 = ln(IndividualsusingtheInternet)
+{txt}(33 missing values generated)
+
+{com}. gen Schoolenrollmentprimarygr1 = ln(Schoolenrollmentprimarygr)
+{txt}(47 missing values generated)
+
+{com}. drop Employmenttopopulationratio1 
+
+. gen Employmenttopopulationratio1 = ln(Employmenttopopulationratio)
+{txt}(15 missing values generated)
+
+{com}. gen gender_ratiomaletofemale1 = ln(gender_ratiomaletofemale)
+{txt}(7 missing values generated)
+
+{com}. gen gender_ratiomtofdiff = D.gender_ratiomaletofemale
+{txt}(34 missing values generated)
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}97{txt}){col 67}={col 70}{res}    21.45
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  Std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2159.542{col 53}{space 1}    2.21{col 62}{space 3}0.029{col 70}{space 4} 487.3794{col 83}{space 3} 9059.567
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 59990.84{col 53}{space 1}   -0.24{col 62}{space 3}0.813{col 70}{space 4}-133303.3{col 83}{space 3} 104827.1
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 677.9075{col 53}{space 1}    3.00{col 62}{space 3}0.003{col 70}{space 4} 689.4791{col 83}{space 3} 3380.397
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2}  2021.66{col 53}{space 1}   -0.05{col 62}{space 3}0.959{col 70}{space 4}-4117.002{col 83}{space 3} 3907.868
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1355.499{col 53}{space 1}    0.53{col 62}{space 3}0.599{col 70}{space 4}-1974.471{col 83}{space 3} 3406.109
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 148.8851{col 53}{space 1}    3.11{col 62}{space 3}0.002{col 70}{space 4} 167.1267{col 83}{space 3} 758.1181
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1490.118{col 53}{space 1}    0.98{col 62}{space 3}0.332{col 70}{space 4}-1504.042{col 83}{space 3} 4410.901
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 988.2236{col 53}{space 1}   -3.52{col 62}{space 3}0.001{col 70}{space 4}-5439.183{col 83}{space 3}-1516.482
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 12750.57{col 53}{space 1}   -1.86{col 62}{space 3}0.066{col 70}{space 4}-48993.58{col 83}{space 3} 1619.144
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}97{txt}) = {res}12.02{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. xttest2
+
+{err}Error: too few common observations across panel to compute full rank VCE.
+
+{txt}    Variable {c |}        Obs        Mean    Std. dev.       Min        Max
+{hline 13}{c +}{hline 57}
+{space 8}__e1 {c |}{res}          6    9.09e-13    160.8366  -217.5868   259.1394
+{txt}{space 8}__e2 {c |}{res}          4    2.84e-14    273.2712  -367.6502   272.8988
+{txt}{space 8}__e3 {c |}{res}          6    7.58e-14    202.7872  -156.9437   351.2331
+{txt}{space 8}__e4 {c |}{res}          1           0           .          0          0
+{txt}{space 8}__e5 {c |}{res}          6   -7.58e-14    142.1373  -248.5202   160.3053
+{txt}{hline 13}{c +}{hline 57}
+{space 8}__e6 {c |}{res}          5   -2.27e-13    253.0654  -444.5979   187.0685
+{txt}{space 8}__e7 {c |}{res}          6   -3.79e-14    129.5231  -144.7571   193.3062
+{txt}{space 8}__e8 {c |}{res}          6   -3.79e-14    159.2352   -157.515   199.5656
+{txt}{space 8}__e9 {c |}{res}          5    1.48e-13     319.891  -405.7883   328.4525
+{txt}{space 7}__e10 {c |}{res}          7    4.55e-13      784.29   -731.516   1251.132
+{txt}{hline 13}{c +}{hline 57}
+{space 7}__e12 {c |}{res}          2           0    95.74676  -67.70319   67.70319
+{txt}{space 7}__e13 {c |}{res}          6    2.27e-13    314.3235  -280.0645   407.2811
+{txt}{space 7}__e14 {c |}{res}          5    1.59e-13    272.8473  -207.7529   363.6394
+{txt}{space 7}__e15 {c |}{res}          6    1.52e-13    91.43135  -125.6822   142.2239
+{txt}{space 7}__e16 {c |}{res}          6    6.06e-13     254.698   -304.333   310.5708
+{txt}{hline 13}{c +}{hline 57}
+{space 7}__e17 {c |}{res}          5    9.09e-13    305.8466   -178.111   542.2349
+{txt}{space 7}__e18 {c |}{res}          5   -4.55e-14    51.17031  -56.93891    61.2304
+{txt}{space 7}__e19 {c |}{res}          6   -1.52e-13    177.3627  -180.5644    330.378
+{txt}{space 7}__e20 {c |}{res}          5           0    181.4865  -220.3638   182.7569
+{txt}{space 7}__e21 {c |}{res}          6   -1.52e-13    123.4774   -170.011   213.8241
+{txt}{hline 13}{c +}{hline 57}
+{space 7}__e22 {c |}{res}          6   -9.47e-14    391.2188  -407.7362   717.7202
+{txt}{space 7}__e24 {c |}{res}          7    6.50e-13    170.8912  -298.8135   257.6143
+{txt}{space 7}__e25 {c |}{res}          6    1.52e-13    116.2273  -193.1506   156.6239
+{txt}{space 7}__e26 {c |}{res}          2   -4.55e-13    85.50204  -60.45907   60.45907
+{txt}{space 7}__e27 {c |}{res}          5    2.73e-13    191.3937  -234.7782   214.6359
+{err}no observations
+{txt}{search r(2000), local:r(2000);}
+
+{com}. estat hettest
+{err}{bf:estat} {bf:hettest} not valid
+{txt}{search r(321), local:r(321);}
+
+{com}. xttest0
+{err}last estimates not xtreg, re
+{txt}{search r(301), local:r(301);}
+
+{com}. xtserial, fe
+{err}command {bf}xtserial{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ssc install xtserial
+{txt}{err}{bf:ssc install}: "{bf:xtserial}" not found at SSC, type {stata search xtserial}
+(To find all packages at SSC that start with x, type {stata ssc describe x})
+{txt}{search r(601), local:r(601);}
+
+{com}. xttest3
+
+{txt}Modified Wald test for groupwise heteroskedasticity
+in fixed effect regression model
+
+{res}H0: sigma(i)^2 = sigma^2 for all i
+
+{txt}chi2 (25)  =   {res} 1.2e+30
+{txt}Prob>chi2 =    {res}  0.0000
+
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}97{txt}){col 67}={col 70}{res}    21.45
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  Std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2159.542{col 53}{space 1}    2.21{col 62}{space 3}0.029{col 70}{space 4} 487.3794{col 83}{space 3} 9059.567
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 59990.84{col 53}{space 1}   -0.24{col 62}{space 3}0.813{col 70}{space 4}-133303.3{col 83}{space 3} 104827.1
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 677.9075{col 53}{space 1}    3.00{col 62}{space 3}0.003{col 70}{space 4} 689.4791{col 83}{space 3} 3380.397
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2}  2021.66{col 53}{space 1}   -0.05{col 62}{space 3}0.959{col 70}{space 4}-4117.002{col 83}{space 3} 3907.868
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1355.499{col 53}{space 1}    0.53{col 62}{space 3}0.599{col 70}{space 4}-1974.471{col 83}{space 3} 3406.109
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 148.8851{col 53}{space 1}    3.11{col 62}{space 3}0.002{col 70}{space 4} 167.1267{col 83}{space 3} 758.1181
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1490.118{col 53}{space 1}    0.98{col 62}{space 3}0.332{col 70}{space 4}-1504.042{col 83}{space 3} 4410.901
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 988.2236{col 53}{space 1}   -3.52{col 62}{space 3}0.001{col 70}{space 4}-5439.183{col 83}{space 3}-1516.482
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 12750.57{col 53}{space 1}   -1.86{col 62}{space 3}0.066{col 70}{space 4}-48993.58{col 83}{space 3} 1619.144
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}97{txt}) = {res}12.02{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. predict residuals, residuals
+{txt}(93 missing values generated)
+
+{com}. reg residuals Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 In
+{bf}{err}In{sf} ambiguous abbreviation
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. > dividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1
+{bf}{err}>{sf} is not a valid command name
+{txt}{search r(199), local:r(199);}
+
+{com}. reg residuals Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1
+
+{txt}      Source {c |}       SS           df       MS      Number of obs   ={res}       130
+{txt}{hline 13}{c +}{hline 34}   F(8, 121)       = {res}   808.99
+{txt}       Model {c |} {res} 1.7656e+09         8   220699441   {txt}Prob > F        ={res}    0.0000
+{txt}    Residual {c |} {res} 33010023.4       121  272810.111   {txt}R-squared       ={res}    0.9816
+{txt}{hline 13}{c +}{hline 34}   Adj R-squared   ={res}    0.9804
+{txt}       Total {c |} {res} 1.7986e+09       129  13942678.7   {txt}Root MSE        =   {res} 522.31
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}                   residuals{col 30}{c |} Coefficient{col 42}  Std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2}-4335.973{col 42}{space 2} 138.6389{col 53}{space 1}  -31.28{col 62}{space 3}0.000{col 70}{space 4}-4610.445{col 83}{space 3}  -4061.5
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-31415.72{col 42}{space 2} 33573.46{col 53}{space 1}   -0.94{col 62}{space 3}0.351{col 70}{space 4}-97883.23{col 83}{space 3} 35051.79
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2}-1965.553{col 42}{space 2} 135.5849{col 53}{space 1}  -14.50{col 62}{space 3}0.000{col 70}{space 4}-2233.979{col 83}{space 3}-1697.126
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2} 690.4457{col 42}{space 2} 739.9447{col 53}{space 1}    0.93{col 62}{space 3}0.353{col 70}{space 4}-774.4699{col 83}{space 3} 2155.361
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2}-1351.808{col 42}{space 2} 242.5837{col 53}{space 1}   -5.57{col 62}{space 3}0.000{col 70}{space 4}-1832.066{col 83}{space 3}-871.5492
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 112.8075{col 42}{space 2} 109.0651{col 53}{space 1}    1.03{col 62}{space 3}0.303{col 70}{space 4}-103.1157{col 83}{space 3} 328.7307
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2}-1595.764{col 42}{space 2} 356.9106{col 53}{space 1}   -4.47{col 62}{space 3}0.000{col 70}{space 4}-2302.362{col 83}{space 3}-889.1649
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2} 4840.625{col 42}{space 2} 322.9572{col 53}{space 1}   14.99{col 62}{space 3}0.000{col 70}{space 4} 4201.246{col 83}{space 3} 5480.004
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2} 14060.49{col 42}{space 2} 3635.806{col 53}{space 1}    3.87{col 62}{space 3}0.000{col 70}{space 4} 6862.455{col 83}{space 3} 21258.53
+{txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{res}
+{com}. vif
+
+{txt}    Variable {c |}       VIF       1/VIF  
+{hline 13}{c +}{hline 22}
+Population~1 {c |} {res}    10.18    0.098279
+{txt}Youthp~15241 {c |} {res}     8.34    0.119921
+{txt}GDPpercapi~1 {c |} {res}     6.21    0.161132
+{txt}Individual~1 {c |} {res}     2.97    0.336500
+{txt}gender_rat~f {c |} {res}     1.59    0.626987
+{txt}Employment~1 {c |} {res}     1.58    0.632380
+{txt}Schoolenro~1 {c |} {res}     1.44    0.696321
+{txt}Urbanpopul~1 {c |} {res}     1.32    0.755033
+{txt}{hline 13}{c +}{hline 22}
+    Mean VIF {c |} {res}     4.20
+
+{com}. estat collin
+{err}{bf:estat} {bf:collin} not valid
+{txt}{search r(321), local:r(321);}
+
+{com}. collinpredict, noconstant
+{err}command {bf}collinpredict{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. ssc install collin
+{txt}{err}{bf:ssc install}: "{bf:collin}" not found at SSC, type {stata search collin}
+(To find all packages at SSC that start with c, type {stata ssc describe c})
+{txt}{search r(601), local:r(601);}
+
+{com}. xtserial, fe
+{err}command {bf}xtserial{sf} is unrecognized
+{txt}{search r(199), local:r(199);}
+
+{com}. xttest3
+{err}last estimates not found
+{txt}{search r(301), local:r(301);}
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}97{txt}){col 67}={col 70}{res}    21.45
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  Std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2159.542{col 53}{space 1}    2.21{col 62}{space 3}0.029{col 70}{space 4} 487.3794{col 83}{space 3} 9059.567
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 59990.84{col 53}{space 1}   -0.24{col 62}{space 3}0.813{col 70}{space 4}-133303.3{col 83}{space 3} 104827.1
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 677.9075{col 53}{space 1}    3.00{col 62}{space 3}0.003{col 70}{space 4} 689.4791{col 83}{space 3} 3380.397
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2}  2021.66{col 53}{space 1}   -0.05{col 62}{space 3}0.959{col 70}{space 4}-4117.002{col 83}{space 3} 3907.868
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1355.499{col 53}{space 1}    0.53{col 62}{space 3}0.599{col 70}{space 4}-1974.471{col 83}{space 3} 3406.109
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 148.8851{col 53}{space 1}    3.11{col 62}{space 3}0.002{col 70}{space 4} 167.1267{col 83}{space 3} 758.1181
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1490.118{col 53}{space 1}    0.98{col 62}{space 3}0.332{col 70}{space 4}-1504.042{col 83}{space 3} 4410.901
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 988.2236{col 53}{space 1}   -3.52{col 62}{space 3}0.001{col 70}{space 4}-5439.183{col 83}{space 3}-1516.482
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 12750.57{col 53}{space 1}   -1.86{col 62}{space 3}0.066{col 70}{space 4}-48993.58{col 83}{space 3} 1619.144
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}97{txt}) = {res}12.02{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. xttest3
+
+{txt}Modified Wald test for groupwise heteroskedasticity
+in fixed effect regression model
+
+{res}H0: sigma(i)^2 = sigma^2 for all i
+
+{txt}chi2 (25)  =   {res} 1.2e+30
+{txt}Prob>chi2 =    {res}  0.0000
+
+
+{com}. predict resid, e
+{txt}(93 missing values generated)
+
+{com}. 
+. tsset panel_variable time_variable
+{err}variable {bf}panel_variable{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. corrgram resid, lags(12)
+{err}sample may not include multiple panels
+{txt}{search r(459), local:r(459);}
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe robust
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}24{txt}){col 67}={col 70}{res}     7.66
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{ralign 94:(Std. err. adjusted for {res:25} clusters in {res:country_id})}
+{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 30}{c |}{col 42}    Robust
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2320.126{col 53}{space 1}    2.06{col 62}{space 3}0.051{col 70}{space 4} -15.0314{col 83}{space 3} 9561.978
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 51845.37{col 53}{space 1}   -0.27{col 62}{space 3}0.786{col 70}{space 4}-121241.6{col 83}{space 3} 92765.51
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 779.8464{col 53}{space 1}    2.61{col 62}{space 3}0.015{col 70}{space 4}  425.414{col 83}{space 3} 3644.462
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2} 2075.867{col 53}{space 1}   -0.05{col 62}{space 3}0.960{col 70}{space 4}-4388.946{col 83}{space 3} 4179.812
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1563.684{col 53}{space 1}    0.46{col 62}{space 3}0.651{col 70}{space 4}-2511.467{col 83}{space 3} 3943.105
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 204.6094{col 53}{space 1}    2.26{col 62}{space 3}0.033{col 70}{space 4}  40.3294{col 83}{space 3} 884.9154
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1314.599{col 53}{space 1}    1.11{col 62}{space 3}0.280{col 70}{space 4} -1259.77{col 83}{space 3} 4166.628
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 1334.206{col 53}{space 1}   -2.61{col 62}{space 3}0.015{col 70}{space 4}-6231.499{col 83}{space 3}-724.1659
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 11635.67{col 53}{space 1}   -2.04{col 62}{space 3}0.053{col 70}{space 4}-47702.06{col 83}{space 3} 327.6211
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+
+{com}. 
+. estat abond
+{err}{bf:estat} {bf:abond} not valid
+{txt}{search r(321), local:r(321);}
+
+{com}. ssc install abond
+{txt}{err}{bf:ssc install}: "{bf:abond}" not found at SSC, type {stata search abond}
+(To find all packages at SSC that start with a, type {stata ssc describe a})
+{txt}{search r(601), local:r(601);}
+
+{com}. gen lag_res = L.residuals
+{txt}(95 missing values generated)
+
+{com}. 
+. corr residuals lag_res
+{txt}(obs=98)
+
+             {c |} residu~s  lag_res
+{hline 13}{c +}{hline 18}
+   residuals {c |}{res}   1.0000
+     {txt}lag_res {c |}{res}   0.9979   1.0000
+
+
+{com}. drop residuals 
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe vce(robust)
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}24{txt}){col 67}={col 70}{res}     7.66
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{ralign 94:(Std. err. adjusted for {res:25} clusters in {res:country_id})}
+{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 30}{c |}{col 42}    Robust
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2320.126{col 53}{space 1}    2.06{col 62}{space 3}0.051{col 70}{space 4} -15.0314{col 83}{space 3} 9561.978
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 51845.37{col 53}{space 1}   -0.27{col 62}{space 3}0.786{col 70}{space 4}-121241.6{col 83}{space 3} 92765.51
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 779.8464{col 53}{space 1}    2.61{col 62}{space 3}0.015{col 70}{space 4}  425.414{col 83}{space 3} 3644.462
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2} 2075.867{col 53}{space 1}   -0.05{col 62}{space 3}0.960{col 70}{space 4}-4388.946{col 83}{space 3} 4179.812
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1563.684{col 53}{space 1}    0.46{col 62}{space 3}0.651{col 70}{space 4}-2511.467{col 83}{space 3} 3943.105
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 204.6094{col 53}{space 1}    2.26{col 62}{space 3}0.033{col 70}{space 4}  40.3294{col 83}{space 3} 884.9154
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1314.599{col 53}{space 1}    1.11{col 62}{space 3}0.280{col 70}{space 4} -1259.77{col 83}{space 3} 4166.628
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 1334.206{col 53}{space 1}   -2.61{col 62}{space 3}0.015{col 70}{space 4}-6231.499{col 83}{space 3}-724.1659
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 11635.67{col 53}{space 1}   -2.04{col 62}{space 3}0.053{col 70}{space 4}-47702.06{col 83}{space 3} 327.6211
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+
+{com}. predict residuals, e
+{txt}(93 missing values generated)
+
+{com}. 
+. gen lag_res = L.residuals
+{err}variable {bf}lag_res{sf} already defined
+{txt}{search r(110), local:r(110);}
+
+{com}. 
+. corr residuals lag_res
+{txt}(obs=98)
+
+             {c |} residu~s  lag_res
+{hline 13}{c +}{hline 18}
+   residuals {c |}{res}   1.0000
+     {txt}lag_res {c |}{res}   0.0386   1.0000
+
+
+{com}. drop lag_res 
+
+. drop residuals 
+
+. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe vce(robust)
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}24{txt}){col 67}={col 70}{res}     7.66
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{ralign 94:(Std. err. adjusted for {res:25} clusters in {res:country_id})}
+{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 30}{c |}{col 42}    Robust
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2320.126{col 53}{space 1}    2.06{col 62}{space 3}0.051{col 70}{space 4} -15.0314{col 83}{space 3} 9561.978
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 51845.37{col 53}{space 1}   -0.27{col 62}{space 3}0.786{col 70}{space 4}-121241.6{col 83}{space 3} 92765.51
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 779.8464{col 53}{space 1}    2.61{col 62}{space 3}0.015{col 70}{space 4}  425.414{col 83}{space 3} 3644.462
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2} 2075.867{col 53}{space 1}   -0.05{col 62}{space 3}0.960{col 70}{space 4}-4388.946{col 83}{space 3} 4179.812
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1563.684{col 53}{space 1}    0.46{col 62}{space 3}0.651{col 70}{space 4}-2511.467{col 83}{space 3} 3943.105
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 204.6094{col 53}{space 1}    2.26{col 62}{space 3}0.033{col 70}{space 4}  40.3294{col 83}{space 3} 884.9154
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1314.599{col 53}{space 1}    1.11{col 62}{space 3}0.280{col 70}{space 4} -1259.77{col 83}{space 3} 4166.628
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 1334.206{col 53}{space 1}   -2.61{col 62}{space 3}0.015{col 70}{space 4}-6231.499{col 83}{space 3}-724.1659
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 11635.67{col 53}{space 1}   -2.04{col 62}{space 3}0.053{col 70}{space 4}-47702.06{col 83}{space 3} 327.6211
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+
+{com}. predict residuals, e
+{txt}(93 missing values generated)
+
+{com}. 
+. gen lag_res = L.residuals
+{txt}(95 missing values generated)
+
+{com}. 
+. corr residuals lag_res
+{txt}(obs=98)
+
+             {c |} residu~s  lag_res
+{hline 13}{c +}{hline 18}
+   residuals {c |}{res}   1.0000
+     {txt}lag_res {c |}{res}   0.5108   1.0000
+
+
+{com}. pca Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, components(3)
+
+{txt}Principal components/correlation{col 50}Number of obs    = {res}       130
+{col 50}{txt}Number of comp.  = {res}         3
+{col 50}{txt}Trace            {col 67}=  {res}        8
+{col 5}{txt}Rotation: (unrotated = principal){col 50}Rho              = {res}    0.7738
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}   Component {c |}   Eigenvalue   Difference         Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 12:Comp1} {c |}{res}      4.06273      2.83475             0.5078       0.5078
+{txt}{col 5}{ralign 12:Comp2} {c |}{res}      1.22799      .328571             0.1535       0.6613
+{txt}{col 5}{ralign 12:Comp3} {c |}{res}      .899416      .149157             0.1124       0.7738
+{txt}{col 5}{ralign 12:Comp4} {c |}{res}      .750259      .173802             0.0938       0.8675
+{txt}{col 5}{ralign 12:Comp5} {c |}{res}      .576457      .274843             0.0721       0.9396
+{txt}{col 5}{ralign 12:Comp6} {c |}{res}      .301614      .179249             0.0377       0.9773
+{txt}{col 5}{ralign 12:Comp7} {c |}{res}      .122365     .0631968             0.0153       0.9926
+{txt}{col 5}{ralign 12:Comp8} {c |}{res}     .0591682            .             0.0074       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+
+Principal components (eigenvectors) 
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 13}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Comp1}{space 1}{space 1}{ralign 8:Comp2}{space 1}{space 1}{ralign 8:Comp3}{space 1}{c |}{space 1}{ralign 11:Unexplained}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 13}
+{space 4}{space 0}{ralign 12:Urbanpopul~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2715}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0091}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6537}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .3161}}}{space 1}
+{space 4}{space 0}{ralign 12:gender_rat~f}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3037}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0548}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1230}}}{space 1}{c |}{space 1}{center 11:{res:{sf:       .608}}}{space 1}
+{space 4}{space 0}{ralign 12:GDPpercapi~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4647}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0456}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1182}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1075}}}{space 1}
+{space 4}{space 0}{ralign 12:Youthp~15241}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4407}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2488}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0076}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1347}}}{space 1}
+{space 4}{space 0}{ralign 12:Population~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4520}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2497}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1673}}}{space 1}{c |}{space 1}{center 11:{res:{sf:     .06824}}}{space 1}
+{space 4}{space 0}{ralign 12:Individual~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4166}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0580}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1365}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .2739}}}{space 1}
+{space 4}{space 0}{ralign 12:Employment~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1722}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6341}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5262}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1366}}}{space 1}
+{space 4}{space 0}{ralign 12:Schoolenro~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1277}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6820}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4689}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1649}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 13}
+
+{com}. xtreg Numregisteredaccounts Comp1 Comp2 Comp3, fe
+{err}variable {bf}Comp1{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. xtreg Numregisteredaccounts PC1 PC2 PC3, fe
+{err}variable {bf}PC1{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. generate PC1 = Comp1
+{err}Comp1 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate PC2 = Comp2
+{err}Comp2 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate PC3 = Comp3
+{err}Comp3 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. pca Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, components(3)
+
+{txt}Principal components/correlation{col 50}Number of obs    = {res}       130
+{col 50}{txt}Number of comp.  = {res}         3
+{col 50}{txt}Trace            {col 67}=  {res}        8
+{col 5}{txt}Rotation: (unrotated = principal){col 50}Rho              = {res}    0.7738
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}   Component {c |}   Eigenvalue   Difference         Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 12:Comp1} {c |}{res}      4.06273      2.83475             0.5078       0.5078
+{txt}{col 5}{ralign 12:Comp2} {c |}{res}      1.22799      .328571             0.1535       0.6613
+{txt}{col 5}{ralign 12:Comp3} {c |}{res}      .899416      .149157             0.1124       0.7738
+{txt}{col 5}{ralign 12:Comp4} {c |}{res}      .750259      .173802             0.0938       0.8675
+{txt}{col 5}{ralign 12:Comp5} {c |}{res}      .576457      .274843             0.0721       0.9396
+{txt}{col 5}{ralign 12:Comp6} {c |}{res}      .301614      .179249             0.0377       0.9773
+{txt}{col 5}{ralign 12:Comp7} {c |}{res}      .122365     .0631968             0.0153       0.9926
+{txt}{col 5}{ralign 12:Comp8} {c |}{res}     .0591682            .             0.0074       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+
+Principal components (eigenvectors) 
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 13}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Comp1}{space 1}{space 1}{ralign 8:Comp2}{space 1}{space 1}{ralign 8:Comp3}{space 1}{c |}{space 1}{ralign 11:Unexplained}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 13}
+{space 4}{space 0}{ralign 12:Urbanpopul~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2715}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0091}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6537}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .3161}}}{space 1}
+{space 4}{space 0}{ralign 12:gender_rat~f}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3037}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0548}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1230}}}{space 1}{c |}{space 1}{center 11:{res:{sf:       .608}}}{space 1}
+{space 4}{space 0}{ralign 12:GDPpercapi~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4647}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0456}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1182}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1075}}}{space 1}
+{space 4}{space 0}{ralign 12:Youthp~15241}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4407}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2488}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0076}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1347}}}{space 1}
+{space 4}{space 0}{ralign 12:Population~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4520}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2497}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1673}}}{space 1}{c |}{space 1}{center 11:{res:{sf:     .06824}}}{space 1}
+{space 4}{space 0}{ralign 12:Individual~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4166}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0580}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1365}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .2739}}}{space 1}
+{space 4}{space 0}{ralign 12:Employment~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1722}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6341}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5262}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1366}}}{space 1}
+{space 4}{space 0}{ralign 12:Schoolenro~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1277}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6820}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4689}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1649}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 13}
+
+{com}. browse
+
+. generate NewVar1 = PC1
+{err}PC1 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate NewVar2 = PC2
+{err}PC2 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate NewVar3 = PC3
+{err}PC3 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. pca Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, components(3)
+
+{txt}Principal components/correlation{col 50}Number of obs    = {res}       130
+{col 50}{txt}Number of comp.  = {res}         3
+{col 50}{txt}Trace            {col 67}=  {res}        8
+{col 5}{txt}Rotation: (unrotated = principal){col 50}Rho              = {res}    0.7738
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}   Component {c |}   Eigenvalue   Difference         Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 12:Comp1} {c |}{res}      4.06273      2.83475             0.5078       0.5078
+{txt}{col 5}{ralign 12:Comp2} {c |}{res}      1.22799      .328571             0.1535       0.6613
+{txt}{col 5}{ralign 12:Comp3} {c |}{res}      .899416      .149157             0.1124       0.7738
+{txt}{col 5}{ralign 12:Comp4} {c |}{res}      .750259      .173802             0.0938       0.8675
+{txt}{col 5}{ralign 12:Comp5} {c |}{res}      .576457      .274843             0.0721       0.9396
+{txt}{col 5}{ralign 12:Comp6} {c |}{res}      .301614      .179249             0.0377       0.9773
+{txt}{col 5}{ralign 12:Comp7} {c |}{res}      .122365     .0631968             0.0153       0.9926
+{txt}{col 5}{ralign 12:Comp8} {c |}{res}     .0591682            .             0.0074       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+
+Principal components (eigenvectors) 
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 13}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Comp1}{space 1}{space 1}{ralign 8:Comp2}{space 1}{space 1}{ralign 8:Comp3}{space 1}{c |}{space 1}{ralign 11:Unexplained}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 13}
+{space 4}{space 0}{ralign 12:Urbanpopul~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2715}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0091}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6537}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .3161}}}{space 1}
+{space 4}{space 0}{ralign 12:gender_rat~f}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3037}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0548}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1230}}}{space 1}{c |}{space 1}{center 11:{res:{sf:       .608}}}{space 1}
+{space 4}{space 0}{ralign 12:GDPpercapi~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4647}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0456}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1182}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1075}}}{space 1}
+{space 4}{space 0}{ralign 12:Youthp~15241}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4407}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2488}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0076}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1347}}}{space 1}
+{space 4}{space 0}{ralign 12:Population~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4520}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2497}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1673}}}{space 1}{c |}{space 1}{center 11:{res:{sf:     .06824}}}{space 1}
+{space 4}{space 0}{ralign 12:Individual~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4166}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0580}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1365}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .2739}}}{space 1}
+{space 4}{space 0}{ralign 12:Employment~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1722}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6341}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5262}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1366}}}{space 1}
+{space 4}{space 0}{ralign 12:Schoolenro~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1277}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6820}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4689}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1649}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 13}
+
+{com}. generate NewVar1 = PC1
+{err}PC1 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate NewVar2 = PC2
+{err}PC2 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. 
+. generate NewVar3 = PC3
+{err}PC3 not found
+{txt}{search r(111), local:r(111);}
+
+{com}. drop lag_res 
+
+. drop residuals 
+
+. drop resid 
+
+. pca Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, components(3)
+
+{txt}Principal components/correlation{col 50}Number of obs    = {res}       130
+{col 50}{txt}Number of comp.  = {res}         3
+{col 50}{txt}Trace            {col 67}=  {res}        8
+{col 5}{txt}Rotation: (unrotated = principal){col 50}Rho              = {res}    0.7738
+
+{txt}{col 5}{hline 13}{c TT}{hline 60}
+{col 5}   Component {c |}   Eigenvalue   Difference         Proportion   Cumulative
+{col 5}{hline 13}{c +}{hline 60}
+{col 5}{ralign 12:Comp1} {c |}{res}      4.06273      2.83475             0.5078       0.5078
+{txt}{col 5}{ralign 12:Comp2} {c |}{res}      1.22799      .328571             0.1535       0.6613
+{txt}{col 5}{ralign 12:Comp3} {c |}{res}      .899416      .149157             0.1124       0.7738
+{txt}{col 5}{ralign 12:Comp4} {c |}{res}      .750259      .173802             0.0938       0.8675
+{txt}{col 5}{ralign 12:Comp5} {c |}{res}      .576457      .274843             0.0721       0.9396
+{txt}{col 5}{ralign 12:Comp6} {c |}{res}      .301614      .179249             0.0377       0.9773
+{txt}{col 5}{ralign 12:Comp7} {c |}{res}      .122365     .0631968             0.0153       0.9926
+{txt}{col 5}{ralign 12:Comp8} {c |}{res}     .0591682            .             0.0074       1.0000
+{txt}{col 5}{hline 13}{c BT}{hline 60}
+
+Principal components (eigenvectors) 
+
+{space 4}{hline 13}{c  TT}{hline 10}{hline 10}{hline 10}{c  TT}{hline 13}
+{space 4}{space 0}{ralign 12:Variable}{space 1}{c |}{space 1}{ralign 8:Comp1}{space 1}{space 1}{ralign 8:Comp2}{space 1}{space 1}{ralign 8:Comp3}{space 1}{c |}{space 1}{ralign 11:Unexplained}{space 1}
+{space 4}{hline 13}{c   +}{hline 10}{hline 10}{hline 10}{c   +}{hline 13}
+{space 4}{space 0}{ralign 12:Urbanpopul~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.2715}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0091}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6537}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .3161}}}{space 1}
+{space 4}{space 0}{ralign 12:gender_rat~f}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.3037}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.0548}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.1230}}}{space 1}{c |}{space 1}{center 11:{res:{sf:       .608}}}{space 1}
+{space 4}{space 0}{ralign 12:GDPpercapi~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4647}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0456}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1182}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1075}}}{space 1}
+{space 4}{space 0}{ralign 12:Youthp~15241}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.4407}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.2488}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0076}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1347}}}{space 1}
+{space 4}{space 0}{ralign 12:Population~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4520}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.2497}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1673}}}{space 1}{c |}{space 1}{center 11:{res:{sf:     .06824}}}{space 1}
+{space 4}{space 0}{ralign 12:Individual~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf:  0.4166}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.0580}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.1365}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .2739}}}{space 1}
+{space 4}{space 0}{ralign 12:Employment~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1722}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6341}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.5262}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1366}}}{space 1}
+{space 4}{space 0}{ralign 12:Schoolenro~1}{space 1}{c |}{space 1}{ralign 8:{res:{sf: -0.1277}}}{space 1}{space 1}{ralign 8:{res:{sf:  0.6820}}}{space 1}{space 1}{ralign 8:{res:{sf: -0.4689}}}{space 1}{c |}{space 1}{center 11:{res:{sf:      .1649}}}{space 1}
+{space 4}{hline 13}{c  BT}{hline 10}{hline 10}{hline 10}{c  BT}{hline 13}
+
+{com}. xtabond2 Numregisteredaccounts L.(Numregisteredaccounts) Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, gmm(L.(Numregisteredaccounts), lag(2 .)) iv(Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1) robust
+{res}{txt}Favoring space over speed. To switch, type or click on {stata "mata: mata set matafavor speed, perm"}.
+{res}Warning: Number of instruments may be large relative to number of observations.
+{res}Warning: Two-step estimated covariance matrix of moments is singular.
+{res}  Using a generalized inverse to calculate robust weighting matrix for Hansen test.
+{res}  Difference-in-Sargan/Hansen statistics may be negative.
+
+{txt}Dynamic panel-data estimation, one-step system GMM
+{hline 78}
+Group variable: {res}country_id{txt}{col 49}Number of obs      = {res}      130
+{txt}Time variable : {res}Year{txt}{col 49}Number of groups   = {res}       25
+{txt}Number of instruments = {res}26{col 49}{txt}Obs per group: min = {res}        1
+{txt}Wald chi2({res}9{txt}){col 15}= {res}  5729.40{col 64}{txt}avg = {res}     5.20
+{txt}Prob > chi2{col 15}={res}     0.000{col 64}{txt}max = {res}        7
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 30}{c |}{col 42}    Robust
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  std. err.{col 54}      z{col 62}   P>|z|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 7}Numregisteredaccounts {c |}
+{space 25}L1. {c |}{col 30}{res}{space 2} 1.174774{col 42}{space 2} .0426921{col 53}{space 1}   27.52{col 62}{space 3}0.000{col 70}{space 4} 1.091099{col 83}{space 3} 1.258449
+{txt}{space 28} {c |}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 107.6362{col 42}{space 2} 35.14969{col 53}{space 1}    3.06{col 62}{space 3}0.002{col 70}{space 4} 38.74404{col 83}{space 3} 176.5283
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-17756.57{col 42}{space 2}  8190.23{col 53}{space 1}   -2.17{col 62}{space 3}0.030{col 70}{space 4}-33809.13{col 83}{space 3}-1704.015
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2}-22.56747{col 42}{space 2} 46.28681{col 53}{space 1}   -0.49{col 62}{space 3}0.626{col 70}{space 4} -113.288{col 83}{space 3} 68.15301
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2} 362.5822{col 42}{space 2} 268.0788{col 53}{space 1}    1.35{col 62}{space 3}0.176{col 70}{space 4}-162.8426{col 83}{space 3}  888.007
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 152.1356{col 42}{space 2} 80.73054{col 53}{space 1}    1.88{col 62}{space 3}0.059{col 70}{space 4}-6.093395{col 83}{space 3} 310.3645
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 6.111653{col 42}{space 2} 43.73219{col 53}{space 1}    0.14{col 62}{space 3}0.889{col 70}{space 4}-79.60186{col 83}{space 3} 91.82517
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 48.62569{col 42}{space 2} 139.0089{col 53}{space 1}    0.35{col 62}{space 3}0.726{col 70}{space 4}-223.8268{col 83}{space 3} 321.0782
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-134.1605{col 42}{space 2} 100.1514{col 53}{space 1}   -1.34{col 62}{space 3}0.180{col 70}{space 4}-330.4536{col 83}{space 3} 62.13254
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-1033.403{col 42}{space 2}  1381.07{col 53}{space 1}   -0.75{col 62}{space 3}0.454{col 70}{space 4}-3740.251{col 83}{space 3} 1673.446
+{txt}{hline 29}{c BT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+Instruments for first differences equation
+{col 3}Standard
+{col 5}D.(Urbanpopulationoftotalpop1 gender_ratiomtofdiff
+{col 5}GDPpercapitaconstant2015US1 Youthpopulationages15241
+{col 5}Populationages65andabove1 IndividualsusingtheInternet1
+{col 5}Employmenttopopulationratio1 Schoolenrollmentprimarygr1)
+{col 3}GMM-type (missing=0, separate instruments for each period unless collapsed)
+{col 5}L(2/7).L.Numregisteredaccounts
+Instruments for levels equation
+{col 3}Standard
+{col 5}Urbanpopulationoftotalpop1 gender_ratiomtofdiff
+{col 5}GDPpercapitaconstant2015US1 Youthpopulationages15241
+{col 5}Populationages65andabove1 IndividualsusingtheInternet1
+{col 5}Employmenttopopulationratio1 Schoolenrollmentprimarygr1
+{col 5}_cons
+{col 3}GMM-type (missing=0, separate instruments for each period unless collapsed)
+{col 5}DL.L.Numregisteredaccounts
+{hline 78}
+Arellano-Bond test for AR(1) in first differences:{col 52}z = {res} -2.16{txt}  Pr > z = {res} 0.031
+{txt}Arellano-Bond test for AR(2) in first differences:{col 52}z = {res} -0.68{txt}  Pr > z = {res} 0.497
+{txt}{hline 78}
+Sargan test of overid. restrictions: chi2({res}16{txt}){col 49}={res}  29.35{txt}{col 59}Prob > chi2 = {res} 0.022
+{txt}  (Not robust, but not weakened by many instruments.)
+Hansen test of overid. restrictions: chi2({res}16{txt}){col 49}={res}  18.31{txt}{col 59}Prob > chi2 = {res} 0.306
+{txt}  (Robust, but weakened by many instruments.)
+
+Difference-in-Hansen tests of exogeneity of instrument subsets:
+  GMM instruments for levels
+    Hansen test excluding group:{col 38}chi2({res}11{txt}){col 49}={res}   9.89{txt}{col 59}Prob > chi2 = {res} 0.540
+{txt}    Difference (null H = exogenous):{col 38}chi2({res}5{txt}){col 49}={res}   8.41{txt}{col 59}Prob > chi2 = {res} 0.135
+{txt}  iv(Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1)
+    Hansen test excluding group:{col 38}chi2({res}8{txt}){col 49}={res}   5.47{txt}{col 59}Prob > chi2 = {res} 0.706
+{txt}    Difference (null H = exogenous):{col 38}chi2({res}8{txt}){col 49}={res}  12.83{txt}{col 59}Prob > chi2 = {res} 0.118
+
+
+{com}. gen lag_res = L.residuals
+{err}variable {bf}residuals{sf} not found
+{txt}{search r(111), local:r(111);}
+
+{com}. xtreg Numregisteredaccounts Urbanpopulationoftotalpop1 gender_ratiomtofdiff GDPpercapitaconstant2015US1 Youthpopulationages15241 Populationages65andabove1 IndividualsusingtheInternet1 Employmenttopopulationratio1 Schoolenrollmentprimarygr1, fe
+{res}
+{txt}Fixed-effects (within) regression{col 49}Number of obs{col 67}={col 69}{res}       130
+{txt}Group variable: {res}country_id{txt}{col 49}Number of groups{col 67}={col 69}{res}        25
+
+{txt}R-squared:{col 49}Obs per group:
+     Within  = {res}0.6388{col 63}{txt}min{col 67}={col 69}{res}         1
+{txt}     Between = {res}0.0077{col 63}{txt}avg{col 67}={col 69}{res}       5.2
+{txt}     Overall = {res}0.0011{col 63}{txt}max{col 67}={col 69}{res}         7
+
+{txt}{col 49}F({res}8{txt}, {res}97{txt}){col 67}={col 70}{res}    21.45
+{txt}corr(u_i, Xb) = {res}-0.9870{txt}{col 49}Prob > F{col 67}={col 73}{res}0.0000
+
+{txt}{hline 29}{c TT}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{col 1}       Numregisteredaccounts{col 30}{c |} Coefficient{col 42}  Std. err.{col 54}      t{col 62}   P>|t|{col 70}     [95% con{col 83}f. interval]
+{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+{space 2}Urbanpopulationoftotalpop1 {c |}{col 30}{res}{space 2} 4773.473{col 42}{space 2} 2159.542{col 53}{space 1}    2.21{col 62}{space 3}0.029{col 70}{space 4} 487.3794{col 83}{space 3} 9059.567
+{txt}{space 8}gender_ratiomtofdiff {c |}{col 30}{res}{space 2}-14238.07{col 42}{space 2} 59990.84{col 53}{space 1}   -0.24{col 62}{space 3}0.813{col 70}{space 4}-133303.3{col 83}{space 3} 104827.1
+{txt}{space 1}GDPpercapitaconstant2015US1 {c |}{col 30}{res}{space 2} 2034.938{col 42}{space 2} 677.9075{col 53}{space 1}    3.00{col 62}{space 3}0.003{col 70}{space 4} 689.4791{col 83}{space 3} 3380.397
+{txt}{space 4}Youthpopulationages15241 {c |}{col 30}{res}{space 2}-104.5669{col 42}{space 2}  2021.66{col 53}{space 1}   -0.05{col 62}{space 3}0.959{col 70}{space 4}-4117.002{col 83}{space 3} 3907.868
+{txt}{space 3}Populationages65andabove1 {c |}{col 30}{res}{space 2} 715.8188{col 42}{space 2} 1355.499{col 53}{space 1}    0.53{col 62}{space 3}0.599{col 70}{space 4}-1974.471{col 83}{space 3} 3406.109
+{txt}IndividualsusingtheInternet1 {c |}{col 30}{res}{space 2} 462.6224{col 42}{space 2} 148.8851{col 53}{space 1}    3.11{col 62}{space 3}0.002{col 70}{space 4} 167.1267{col 83}{space 3} 758.1181
+{txt}Employmenttopopulationratio1 {c |}{col 30}{res}{space 2} 1453.429{col 42}{space 2} 1490.118{col 53}{space 1}    0.98{col 62}{space 3}0.332{col 70}{space 4}-1504.042{col 83}{space 3} 4410.901
+{txt}{space 2}Schoolenrollmentprimarygr1 {c |}{col 30}{res}{space 2}-3477.832{col 42}{space 2} 988.2236{col 53}{space 1}   -3.52{col 62}{space 3}0.001{col 70}{space 4}-5439.183{col 83}{space 3}-1516.482
+{txt}{space 23}_cons {c |}{col 30}{res}{space 2}-23687.22{col 42}{space 2} 12750.57{col 53}{space 1}   -1.86{col 62}{space 3}0.066{col 70}{space 4}-48993.58{col 83}{space 3} 1619.144
+{txt}{hline 29}{c +}{hline 11}{hline 11}{hline 9}{hline 8}{hline 13}{hline 12}
+                     sigma_u {c |} {res}  3811.037
+                     {txt}sigma_e {c |} {res} 292.61871
+                         {txt}rho {c |} {res} .99413909{txt}   (fraction of variance due to u_i)
+{hline 29}{c BT}{hline 64}
+F test that all u_i=0: F({res}24{txt}, {res}97{txt}) = {res}12.02{col 62}{txt}Prob > F = {res}0.0000
+
+{com}. predict residuals, e
+{txt}(93 missing values generated)
+
+{com}. gen lag_res = L.residuals
+{txt}(95 missing values generated)
+
+{com}. sktest residuals
+{res}
+{txt}Skewness and kurtosis tests for normality
+{col 58}{hline 5} Joint test {hline 5}
+{col 5}Variable {c |}{col 22}Obs   Pr(skewness)   Pr(kurtosis)   Adj chi2(2)  Prob>chi2
+{hline 13}{c +}{hline 65}
+   residuals {c |}{res}{col 16}      130{col 34}0.0000{col 49}0.0000{col 60}    29.24{col 74}0.0000
+
+{com}. qnorm residuals, normal
+{err}option {bf:normal} not allowed
+{txt}{search r(198), local:r(198);}
+
+{com}. qnorm residuals
+{res}
+{com}. drop _est_fixed 
+
+. drop _est_random 
+
+. drop residuals 
+
+. drop lag_res 
+
+. log close
+      {txt}name:  {res}<unnamed>
+       {txt}log:  {res}C:\Users\User\Desktop\trash.smcl
+  {txt}log type:  {res}smcl
+ {txt}closed on:  {res}27 Apr 2024, 14:55:57
+{txt}{.-}
+{smcl}
+{txt}{sf}{ul off}
